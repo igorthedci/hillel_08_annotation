@@ -7,28 +7,19 @@
  */
 package task_01_test;
 
-import java.lang.annotation.*;
 import java.lang.reflect.Method;
 import java.util.List;
 
 public class Main {
 
-    @Target(ElementType.METHOD) // Аннотация применяется к методу
-    @Retention(RetentionPolicy.RUNTIME) // Аннотация применяется во время выполнения программы
-    public @interface Test { // имя аннотации Test
-        int a(); // параметр аннотации
-
-        int b(); // параметр аннотации
-    }
-
     public static void main(String[] args) throws Exception {
         try {
-            Class cls = Main.class;
-            Class[] paramClass = new Class[]{int.class, int.class};
+            Class clsAnn = Annotations.class;
+//            Class[] paramClass = new Class[]{int.class, int.class};
             List<Object> arguments = new ArrayList<>();
-            Method[] mtds = Test.class.getMethods();
+            Method[] mtds = cls.getMethods();
             for (Method mtd : mtds) {
-                Test ann = mtd.getAnnotation(Test.class);
+                Annotations.Test ann = mtd.getAnnotation(Test.class);
                 arguments.add(mtd.invoke(ann, (Object[]) null));
                 mtd.invoke(cls.newInstance(), ann.a(), ann.b());
             }
