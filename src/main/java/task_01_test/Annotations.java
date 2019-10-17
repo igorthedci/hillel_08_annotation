@@ -21,4 +21,9 @@ public class Annotations {
         int b() default 5; // параметр аннотации
     }
 
+    @Test(a = 2, b = 5)
+    public void test(int a, int b) {
+        System.out.printf("Sum of numbers %d and %d is %d.", a, b, a + b);
+    }
+
 }
