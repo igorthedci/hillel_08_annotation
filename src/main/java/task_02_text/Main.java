@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE) // Аннотация применяется к классу
 @Retention(RetentionPolicy.RUNTIME) // Аннотация применяется во время выполнения программы
-public @interface TextBackup {
+@interface TextBackup {
     String backupFile = "";
     String backupMethod = "";
 }
