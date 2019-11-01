@@ -6,4 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 public class Saver {
+
+    public void saveToFile(String fileName, String saveText) {
+
+    }
 }

@@ -13,12 +13,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.TYPE) // Аннотация применяется к классу
-@Retention(RetentionPolicy.RUNTIME) // Аннотация применяется во время выполнения программы
-@interface TextBackup {
-    String backupFile = "";
-    String backupMethod = "";
-}
 
 public class Main {
 }
