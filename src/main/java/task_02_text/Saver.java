@@ -1,13 +1,27 @@
 package task_02_text;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.FileWriter;
+import java.io.File;
+import java.io.IOException;
 
 public class Saver {
 
-    public void saveToFile(String fileName, String saveText) {
+    public void saveToFile(String fileName, String saveString) {
+        FileWriter writeFile = null;
+        try {
+            File logFile = new File(fileName);
+            writeFile = new FileWriter(logFile);
+            writeFile.write(saveString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (writeFile != null) {
+                try {
+                    writeFile.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
+        }
     }
-}

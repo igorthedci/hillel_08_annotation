@@ -8,11 +8,15 @@
  */
 package task_02_text;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
+import java.lang.reflect.InvocationTargetException;
 
 public class Main {
+
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+        TextContainer theContainer = new TextContainer();
+
+        theContainer.saveContainer();
+        theContainer.setTheString("New string to save.");
+        theContainer.saveContainer();
+    }
 }

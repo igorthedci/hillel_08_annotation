@@ -16,20 +16,17 @@ import java.lang.reflect.Method;
  * Написать класс Saver, который сохранит поле класса TextContainer в указанный файл."
  */
 
-@Target(ElementType.TYPE) // Аннотация применяется к классу
-@Retention(RetentionPolicy.RUNTIME) // Аннотация применяется во время выполнения программы
-@interface TextBackup { // declare a new annotation
-    String backupFile() default  "";
-    String backupMethod() default "";
-}
-
-@TextBackup(backupFile = "C:\\tmp.txt", backupMethod = "saveToFile")
+@SaveAnnotation(backupFile = "C:\\tmp.txt", backupMethod = "saveToFile")
 public class TextContainer {
     private String backupFile;
     private String backupMethod;
     private String theString = "The best string";
-    
-    void saveMethod() throws InvocationTargetException, IllegalAccessException {
+
+    public void setTheString(String theString) {
+        this.theString = theString;
+    }
+
+    void saveContainer() throws InvocationTargetException, IllegalAccessException {
 
         Saver theS = new Saver(); // экземпляр объекта Saver
         Class clsS = theS.getClass(); // нашли класс у объекта Saver
