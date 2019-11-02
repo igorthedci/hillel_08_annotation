@@ -7,7 +7,7 @@
  * "@TestAnnotation(a=2, b=5)
  * public void test(int a, int b) {...}"
  */
-package task_01_test;
+package task_01_annotation;
 
 import java.lang.reflect.Method;
 

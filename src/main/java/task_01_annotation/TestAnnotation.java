@@ -1,4 +1,4 @@
-package task_01_test;
+package task_01_annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

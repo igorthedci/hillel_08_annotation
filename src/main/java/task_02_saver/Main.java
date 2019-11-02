@@ -6,13 +6,13 @@
  *
  * Написать класс Saver, который сохранит поле класса TextContainer в указанный файл."
  */
-package task_02_text;
+package task_02_saver;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class Main {
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         TextContainer theContainer = new TextContainer();
 
         theContainer.saveContainer();

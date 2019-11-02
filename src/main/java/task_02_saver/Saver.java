@@ -1,16 +1,15 @@
-package task_02_text;
+package task_02_saver;
 
 import java.io.FileWriter;
-import java.io.File;
 import java.io.IOException;
 
 public class Saver {
 
     public void saveToFile(String fileName, String saveString) {
         FileWriter writeFile = null;
+        System.out.printf("saveToFile:: fileName=%s saveString=%s\n", fileName, saveString);
         try {
-            File logFile = new File(fileName);
-            writeFile = new FileWriter(logFile);
+            writeFile = new FileWriter(fileName);
             writeFile.write(saveString);
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,3 +24,4 @@ public class Saver {
 
         }
     }
+}
