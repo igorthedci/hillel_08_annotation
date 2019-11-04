@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  */
 
 @SaveAnnotation(backupFileName = "container.txt", backupMethodName = "saveToFile")
-public class TextContainer {
+public class TestConteiner {
 
     private String theString = "The best string";
     private String backupFileName;
@@ -24,10 +24,10 @@ public class TextContainer {
         this.theString = theString;
     }
 
-    public TextContainer() throws NoSuchMethodException { // constructor
+    public TestConteiner() throws NoSuchMethodException { // constructor
 
         this.theSaver = new Saver();
-        SaveAnnotation theAnn = TextContainer.class.getAnnotation(SaveAnnotation.class);
+        SaveAnnotation theAnn = TestConteiner.class.getAnnotation(SaveAnnotation.class);
         // convert annotated string to file name
         this.backupFileName = theAnn.backupFileName();
         // convert annotated string to method name
