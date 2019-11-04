@@ -12,12 +12,13 @@ import java.lang.reflect.Method;
  * Написать класс Saver, который сохранит поле класса TextContainer в указанный файл."
  */
 
-@SaveAnnotation(backupFileName = "C:\\container.txt", backupMethodName = "saveToFile")
+@SaveAnnotation(backupFileName = "container.txt", backupMethodName = "saveToFile")
 public class TextContainer {
 
     private String theString = "The best string";
     private String backupFileName;
     private Method backupMethod;
+    private Saver theSaver;
 
     public void setTheString(String theString) {
         this.theString = theString;
@@ -25,16 +26,19 @@ public class TextContainer {
 
     public TextContainer() throws NoSuchMethodException { // constructor
 
+        this.theSaver = new Saver();
         SaveAnnotation theAnn = TextContainer.class.getAnnotation(SaveAnnotation.class);
         // convert annotated string to file name
-        backupFileName = theAnn.backupFileName();
+        this.backupFileName = theAnn.backupFileName();
         // convert annotated string to method name
         String backupMethodName = theAnn.backupMethodName();
-        backupMethod = Saver.class.getMethod(backupMethodName, String.class, String.class);
+        this.backupMethod = theSaver.getClass().getMethod(backupMethodName, String.class, String.class);
     }
 
     void saveContainer() throws InvocationTargetException, IllegalAccessException {
-        backupMethod.invoke(Saver.class, backupFileName, theString);
+//        System.out.printf("saveContainer:: method=%s arg1=%s arg2=%s\n",
+//                this.backupMethod.getName(), this.backupFileName, this.theString);
+        backupMethod.invoke(theSaver, backupFileName, theString);
     }
 
 }
