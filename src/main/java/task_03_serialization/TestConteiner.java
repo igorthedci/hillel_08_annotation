@@ -11,6 +11,7 @@ import java.io.*;
 public class TestConteiner implements Serializable {
     String text = "text from textContainer";
     private static final String FILE_NAME = "testConteiner.ser";
+    private static final long serialVersionUID = 1L;
 
     @Saver
     public void save(String text1, String path) throws IOException {
@@ -22,12 +23,35 @@ public class TestConteiner implements Serializable {
         }
     }
 
-    public static void serialize() {
-        try (FileOutputStream fs = new FileOutputStream(FILE_NAME);
-             ObjectOutputStream os = new ObjectOutputStream(fs)) {
-            os.writeObject(cat);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void serialize(TestConteiner aTS) {
+        FileOutputStream fs = null;
+        ObjectOutputStream os = null;
+        try {
+            fs = new FileOutputStream(FILE_NAME);
+            os = new ObjectOutputStream(fs);
+            os.writeObject(aTS);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
+
+    public void serialize() {
+        serialize(this);
+    }
+
+    public TestConteiner deserialize() {
+        FileInputStream fs;
+        ObjectInputStream os;
+        TestConteiner aTS = null;
+
+        try {
+            fs = new FileInputStream(FILE_NAME);
+            os = new ObjectInputStream(fs);
+            aTS = (TestConteiner) os.readObject();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return aTS;
+    }
+
 }
